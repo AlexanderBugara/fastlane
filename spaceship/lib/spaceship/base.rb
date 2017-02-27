@@ -24,7 +24,7 @@ module Spaceship
         @hash = hash || {}
       end
 
-      def has_key?(key)
+      def key?(key)
         @hash.key?(key)
       end
 
