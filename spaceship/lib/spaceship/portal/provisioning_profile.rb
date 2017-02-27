@@ -487,7 +487,7 @@ module Spaceship
       end
 
       def app
-        if raw_data.key?('appId')
+        if raw_data.has_key?('appId')
           app_attributes = raw_data['appId']
         else
           app_attributes = fetch_details['appId']
