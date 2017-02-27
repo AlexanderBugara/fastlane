@@ -74,7 +74,6 @@ describe Spaceship::ProvisioningProfile do
       expect(a_request(:post, /developerservices2.apple.com/)).to_not have_been_made
       expect(a_request(:post, 'https://developer.apple.com/services-account/QH65B2/account/ios/profile/getProvisioningProfile.action')).to have_been_made.times(6)
     end
-
   end
 
   describe '#find_by_bundle_id' do

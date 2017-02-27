@@ -262,15 +262,14 @@ module Spaceship
         # @param mac (Bool) (optional): Pass true to get all Mac provisioning profiles
         # @param xcode (Bool) (optional): Pass true to include Xcode managed provisioning profiles
         def all(mac: false, xcode: false)
-
           profiles = if ENV['SPACESHIP_AVOID_XCODE_API']
-            client.provisioning_profiles(mac: mac)
-          else
-            client.provisioning_profiles_via_xcode_api(mac: mac)
+                       client.provisioning_profiles(mac: mac)
+                     else
+                       client.provisioning_profiles_via_xcode_api(mac: mac)
           end
 
           # transform raw data to class instances
-          profiles.map!{|profile| self.factory(profile) }
+          profiles.map! { |profile| self.factory(profile) }
 
           # filter out the profiles managed by xcode
           unless xcode
@@ -488,10 +487,10 @@ module Spaceship
       end
 
       def app
-        app_attributes = if raw_data.has_key?('appId')
-          raw_data['appId']
-        else
-          fetch_details['appId']
+        app_attributes = if raw_data.key?('appId')
+                           raw_data['appId']
+                         else
+                           fetch_details['appId']
         end
 
         App.set_client(client).new(app_attributes)

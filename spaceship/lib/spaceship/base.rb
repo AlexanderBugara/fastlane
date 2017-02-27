@@ -25,7 +25,7 @@ module Spaceship
       end
 
       def has_key?(key)
-        @hash.has_key?(key)
+        @hash.key?(key)
       end
 
       def get(*keys)
